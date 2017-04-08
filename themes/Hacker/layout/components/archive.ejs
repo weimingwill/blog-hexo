@@ -13,24 +13,46 @@ if (page.archive){
   <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= title %></h2>
 
   <div class="archive">
-    <% page.posts.each(function(item){ %>
-      <div class="<%= item.layout %> archive">
-        <div class="archive-post">
-          <time datetime="<%= item.date.toDate().toISOString() %>">
-            <a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a>
-          </time>
-          <% if (item.link){ %>
-            <% if (item.title){ %>
-            <h3 class="archive-title"><a href="<%- item.link %>" target="_blank"><span><%= item.title %></span></a></h3>
-            <% } else { %>
-            <h3 class="archive-title"><a href="<%- item.link %>" target="_blank"><span><%= item.link %></span></a></h3>
-            <% } %>
-          <% } else { %>
-            <h3 class="archive-title"><a href="<%- config.root %><%- item.path %>"><span><%= item.title %></span></a></h3>
-          <% } %>
+
+    <% var last; %>
+    <% page.posts.each(function(post, i){ %>
+      <% var year = post.date.year(); %>
+      <% if (last != year){ %>
+      <% if (last != null){ %>
+         </div></section>
+      <% } %>
+      <% last = year; %>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="<%- url_for('archives/' + year) %>" class="archive-year"><%= year %></a>
         </div>
-      </div>
+        <div class="archives">
+          <% } %>
+          <article class="archive-article archive-type-<%= post.layout %>">
+            <div class="archive-article-inner">
+              <header class="archive-article-header">
+
+                <time class="archive-time" datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, 'MMM D') %></time>
+
+                <% if (post.link){ %>
+                <% if (post.title){ %>
+                <h3 class="archive-title"><a href="<%- post.link %>" target="_blank"><span><%= post.title %></span></a></h3>
+                <% } else { %>
+                <h3 class="archive-title"><a href="<%- post.link %>" target="_blank"><span><%= post.link %></span></a></h3>
+                <% } %>
+                <% } else { %>
+                <h3 class="archive-title"><a href="<%- config.root %><%- post.path %>"><span><%= post.title %></span></a></h3>
+                <% } %>
+
+              </header>
+            </div>
+          </article>
+
     <% }); %>
+
+    <% if (page.posts.length){ %>
+      </div></section>
+    <% } %>
     <%- partial('pagination') %>
   </div>
 

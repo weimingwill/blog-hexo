@@ -7,8 +7,8 @@ duoshuo: false
 duoshuo_name:
 
 # disqus comment
-disqus:
-disqus_shortname:
+disqus: true
+disqus_shortname: Weiming
 
 # google analytics
-googleTrackId:
+googleTrackId: UA-77129198-1
