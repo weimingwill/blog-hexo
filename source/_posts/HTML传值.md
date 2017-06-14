@@ -1,7 +1,7 @@
 ---
 title: HTML Form 传值
 date: 2017-04-04 00:57:20
-tags:
+tags: 技术, HTML
 ---
 今天碰到一个 HTML 的问题，一个表单在提交后，到达 action 指向的页面后，在连接中所传递的值，都直接被删除了的问题。比如 `<form action="http://dest.com?id=1" method="GET"></form>`，这个表单在提交后，网页的链接为 `http://dest.com?` 而后面本来想要传递的值 `id = 1` 没了。
 
