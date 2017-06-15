@@ -13,15 +13,15 @@
   <div class="archive">
     <% site.tags.sort('name').map(function(tag){  %>
     <div class="archive-tags">
-      <span class="post-tags">
+      <span class="post-tag">
         <i class="icon-tags"></i>
           <a href="<%= url_for(tag.path) %>" title="<%= tag.name %>" rel="<%= tag.length %>"><%= tag.name %></a>
       </span>
       <% tag.posts.sort('-date').map(function(item){  %>
         <div class="<%= item.layout %> archive">
           <div class="archive-post">
-            <time datetime="<%= item.date.toDate().toISOString() %>">
-              <a href="<%- url_for(item.path) %>"><%= item.date.format(config.date_format) %></a>
+            <time class="archive-time" datetime="<%= item.date.toDate().toISOString() %>">
+              <%= item.date.format('MMM D, YYYY') %>
             </time>
             <% if (item.link){ %>
               <% if (item.title){ %>
