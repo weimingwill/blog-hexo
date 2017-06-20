@@ -1,5 +1,5 @@
 <article>
-  <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= page.title || config.title %></h2>
+  <h3 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= page.title || config.title %></h3>
 
   <div class="tags-cloud">
     <% site.tags.sort('name').map(function(tag){  %>

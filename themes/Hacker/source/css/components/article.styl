@@ -5,7 +5,11 @@ $articleTextColor = #424242
 
 article
   position relative
-  padding 8rem 0
+  font-family: -apple-system-font, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  padding 2em 2em 5em
+  margin auto
+  max-width: 100%;
+  white-space normal
 
   a
     color $hackerRed
@@ -21,10 +25,12 @@ article
     margin-left -75px
 
   blockquote
-    margin 6rem 2rem
-    padding-left 15px
     line-height 2rem
     border-left 4px solid $hackerRed
+    padding-left 1.5em
+    margin 0
+    border-left 5px solid $hackerRed
+    font-size 15px
 
   .article-title
     position relative
@@ -126,6 +132,20 @@ article
 
 
 
+  ol, ul {
+    margin: 20px 10px;
+    max-width: 100%;
+    min-height: 1em;
+    color: $articleTextColor;
+    text-align: justify;
+    line-height: 28px;
+    letter-spacing: 1px;
+    font-size: 15px;
+  }
+
+  li > p {
+    margin: 10px;
+  }
 
   code
     padding 2px 4px
@@ -136,8 +156,14 @@ article
     border-radius 0
 
   p
-    margin 2rem 0
-    line-height 1.8
+    margin: 20px 10px;
+    max-width: 100%;
+    min-height: 1em;
+    color: $articleTextColor;
+    text-align: justify;
+    line-height: 28px;
+    letter-spacing: 1px;
+    font-size: 15px;
 
 
   .video-container
@@ -153,6 +179,21 @@ article
       left: 0;
       width: 100%;
       height: 100%;
+
+  h2 {
+    margin: 40px;
+    max-width: 100%;
+    min-height: 1em;
+    color: rgb(24, 156, 199);
+    text-align: center;
+    line-height: 25.200000762939453px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom-width: 0.5px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(24, 156, 199);
+  }
 
   table
     max-width 100%
@@ -185,6 +226,21 @@ article
     .table-striped tbody tr:nth-of-type(odd)
       background-color:#f2f2f2
 
+
+  @media screen and (max-width: 726px) {
+    body {
+      padding: 1em 20px;
+      font-size: 120%;
+    }
+
+    h1 {
+      font-size: 250%;
+    }
+
+    h3, h3, h5 {
+      font-size: 140%;
+    }
+  }
 
 
 
