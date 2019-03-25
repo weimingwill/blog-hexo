@@ -129,9 +129,6 @@ article
           content ","
           padding-right 5px
 
-
-
-
   ol, ul {
     margin: 20px 10px;
     max-width: 100%;
@@ -145,8 +142,15 @@ article
 
   ol
     li
-      font-size: 15px;
       color: $articleTextColor;
+      text-align: justify;
+      line-height: 28px;
+      letter-spacing: 1px;
+      font-size: 15px;
+
+      &:before
+        font-size 15px
+        color $articleTextColor
 
   li > p {
     margin: 10px;
@@ -203,6 +207,7 @@ article
   h3 {
     margin: 10px;
     font-size: 17px;
+    font-weight: bold;
   }
 
   table
@@ -251,12 +256,3 @@ article
       font-size: 140%;
     }
   }
-
-
-
-
-
-
-
-
-
