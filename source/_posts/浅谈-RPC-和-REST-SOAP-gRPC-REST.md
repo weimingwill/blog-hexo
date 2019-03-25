@@ -169,7 +169,7 @@ SOAP 适合企业应用，REST 更适合高并发场景。 SOAP 的业务状态�
 
 REST 更适合**缓存**，因为 REST 是无状态操作，信息可以被缓存。
 
-SOAP 是「面向动作」的，多数用的是 POST，可以支持多步操作，或者各种动作，比如 ADD，MINUS 等。REST 是「面向资源」的，通过 GET, POST, DELETE, PUT 来调取和维护服务端的资源。
+SOAP 是「面向动作」的，多数用的是 POST，可以支持多步操作，或者各种动作，比如 ADD，MINUS 等。REST 是「面向资源」的，通过 GET, POST, DELETE, PUT 来调取和维护服务端的资源。GET 方法可以浏览器直接跳转，POST 必须借助表单或者 ajax，这就限制了 SOAP 请求只能在页面内获取或者提交数据。
 
 SOAP 相比于 REST 有许多安全标准，相对来说安全性更高。
 
