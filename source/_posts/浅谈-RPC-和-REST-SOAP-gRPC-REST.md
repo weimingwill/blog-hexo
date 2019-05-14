@@ -12,7 +12,7 @@ tags: [技术,分布式]
 
 在 1984 年，Bruce Jay Nelson 发表了奠定基础性的论文 [Implementing Remote Procedure Call](http://www.cs.cmu.edu/~dga/15-712/F07/papers/birrell842.pdf)，定义了机器之间互通这种远程调用的标准。RPC (Remote Procedure Call) 即远程过程调用，有了它，客户端可以像调用本地接口一样调用远程的服务端。
 
-![](https://upload-images.jianshu.io/upload_images/2736397-ecb644f0dabd9372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.imgur.com/QP59zGt.png)
 
 怎么实现远程调用像本地调用一样呢？RPC 模式分为三层，**RPCRuntime** 负责最底层的网络传输，**Stub** 处理客户端和服务端约定好的语法、语义的封装和解封装，这些调用远程的细节都被这两层搞定了，**用户和服务器**这层就只要负责处理业务逻辑，调用本地 Stub 就可以调用远程。
 
@@ -163,7 +163,7 @@ SOAP 是一种 RPC 框架，HTTP 是承载协议，本身是一种应用协议�
 
 REST 的性能比 SOAP 更好。两者都是基于文本类的传输，REST 用的 Json 比 SOAP 的 XML 格式更加简单轻巧（参考下图），因此 REST 的性能会更好些。
 
-![](https://upload-images.jianshu.io/upload_images/2736397-c4bb6aad9a95470e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://i.imgur.com/NcZv2TD.png)
 
 SOAP 适合企业应用，REST 更适合高并发场景。 SOAP 的业务状态大多是维护在服务端的，而 REST 是无状态的操作，维护的是**资源状态**，将会话状态交由客户端维护。因此，SOAP 更适合企业软件中客户端与服务端比较平衡的情况，REST 更适合互联网应用中，多客户端的高并发场景，利于横向扩展。（分页的例子）
 

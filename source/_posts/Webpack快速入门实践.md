@@ -3,7 +3,7 @@ title: Webpack快速入门实践
 date: 2017-04-08 16:12:49
 tags: [技术,webpack]
 ---
-![webpack](http://upload-images.jianshu.io/upload_images/2736397-e81c7df807e5ae43.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![webpack](https://i.imgur.com/qvGm45u.png)
 
 ## 源起
 能碰上 webpack，是偶然也是必然。本来想在公司下个项目试试 AngularJS，但是又不能使用 server。奇怪要求的限制，滋生了奇怪的请求，所以在 Google 上查了半天没有找到合理的解决方案，只在 Google Group 里面看到有两个人讨论的热火朝天，里面提到了 webpack.config.js 貌似能够成功解决能够这个问题，尝试了下，老是有问题，就开始读 webpack 文档。之后在看第一个 AngularJS 2 教程时，直接看到一句大意是，**如果你还不懂什么是 webpack，那你先别来看这个了，回家再进修进修吧。** 不禁好奇，这东西那么好用？更仔细的研究了下，应用确实挺广的，而且很实用。废话不多说，直接上教程。从 0 开始创建一个 webpack 项目，一边往里面加内容，一边介绍。
@@ -32,7 +32,7 @@ cd webpack-tut
 
 初始化
 ```
-npm init 
+npm init
 /* 命个名，其他的都回车跳过
    name: (webpack-tut) webpack-starter
    version: (1.0.0)
@@ -90,7 +90,7 @@ eval("console.log('Hello');\n//# sourceMappingURL=data:application/json;charset=
 ```
 恭喜你已经成功的使用了一次 webpack。
 
-先讲上面过程涉及的 Webpack 里两个核心的概念 entry（入口） 和 output（输出） ，**entry 是初始文件的路径，output 是自动生成后的文件路径和文件名。** 
+先讲上面过程涉及的 Webpack 里两个核心的概念 entry（入口） 和 output（输出） ，**entry 是初始文件的路径，output 是自动生成后的文件路径和文件名。**
 
 ### 将文件自动插入 HTML 中
 #### 初步使用
@@ -227,7 +227,7 @@ body {
 	background-color: lightblue;
 }
 ```
- 
+
  运行 `webpack -d`，双击打开 dist/index.html，背景是浅蓝色的，但是 dist 文件夹里没有多处一个 app.css 的文件，那是因为 css 文件在加载的过程中，被转换打包到了 app.bundle.js 里面了，在这之中起作用的就是 webpack 的最后一个核心概念，loaders（加载器）。**loaders 的作用就是对资源文件进行转换。**
 
 ## 总结
@@ -310,7 +310,7 @@ body {
 </html>
 ```
 
-全文借鉴了视频 [Webpack 2 Tutorial](https://www.youtube.com/watch?v=JdGnYNtuEtE) by Ihatetomatoes 
+全文借鉴了视频 [Webpack 2 Tutorial](https://www.youtube.com/watch?v=JdGnYNtuEtE) by Ihatetomatoes
 看完前几个视频并跟着做，大改要40分钟到1小时。
 看这篇的话可以快很多。
 
