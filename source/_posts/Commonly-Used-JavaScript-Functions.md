@@ -3,18 +3,20 @@ title: Commonly Used JavaScript Functions
 date: 2017-05-27 12:43:31
 tags: [技术,JavaScript]
 ---
+<!-- more -->
+
 ##### Dynamic call functions
 
 ```
 // function to call
-function toCallFn() { 
+function toCallFn() {
   console.log('fn called');
 }
 
 const dynamicCallFn = { toCallFn };
 dynamicCallFn['toCallFn']();
 ```
-References: 
+References:
 http://stackoverflow.com/questions/676721/calling-dynamic-function-with-dynamic-parameters-in-javascript
 http://stackoverflow.com/questions/34655616/create-an-instance-of-a-class-in-es6-with-a-dynamic-name
 
@@ -29,16 +31,16 @@ if (!isNaN(value) && value.toString().indexOf('.') != -1) {
 
 ##### Add event listener with param
 ```
-var param; 
+var param;
 $selector.addEventListener("click", () => fn(param));
 ```
 Remake: After adding event listeners, event functions will be triggered in sequence.
 
-##### Map - Reduce 
+##### Map - Reduce
 ```
 // To calculate total cost
 let nums = [{cost: 20}, {cost: 10}]
-let totalCost = nums.map(n => n.cost).reduce((sum, cost) => { 
+let totalCost = nums.map(n => n.cost).reduce((sum, cost) => {
   return sum + cost
 }) // 30
 
@@ -86,14 +88,14 @@ fn ({a ,b c})
 function fn ({a, b, c}) { console.log('fn') }
 
 // define fn in this way will give error
-function fn ({first, second, third}) {} 
+function fn ({first, second, third}) {}
 ```
 
 ##### For loop using forEach
 When using forEach, it will loop over all items and will not stop with `break` or   `return`.
- 
+
 ##### Use logical operator to assign value
-When use `AND`/ `&& ` to assign value, if first is true, return value of  the second operand; if first is false, return value of first operand. 
+When use `AND`/ `&& ` to assign value, if first is true, return value of  the second operand; if first is false, return value of first operand.
 ```
 // if originalVal is true, value === newVal
 // if originalVal is false, value === originalVal

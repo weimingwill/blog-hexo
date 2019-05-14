@@ -3,23 +3,61 @@ title: JavaScript bind() 的用法
 date: 2017-04-12 12:43:31
 tags: [技术,JavaScript]
 ---
-> 转眼8月上旬过完了，7月的欠债，也该还了。
+> 本以为学会了独孤九剑，结果握剑姿势都不对。
 
-## 码代码
-7月是进公司后完整经历的第一个开发周期。按照22天的工作日来算，前10-15天开发新功能，后7天左右的时间修 bug。开发和修 bug 都有设定 Code Freeze 的时间 ( Freeze 后不能再添加新功能)，在这之后，CI (Countinuous Integration) Team 会部署将新开发的功能部署到测试环境的服务器上，QE (Quality Engineer) 在上面做测试，发现了 bug 就创建新的 ticket，随之而来的就是开心的修 bug 环节。在整个开发周期中，有一些新的想法。
+bind() 怎么用？码的过程中用了无数次，`$('button').bind('click', function() {...} );`，结果要给室友解释时，竟无从开口，果然，行不行，溜一溜就知道了。赶紧把自己关进小黑屋，再磨磨剑。
 
-### 需求更改
-程序员向来最 “痛恨” 的就是需求更改，所以程序员和产品经理之间，有着无数的前世今生。我们公司的人员架构和普遍国内的互联网公司不同，没有专门的产品经理，有一个专门的团队，叫做 concept design，做的主要是产品功能的设计和UI的设计，老板 (Team leader or manager) 则在一定程度上做了产品经理和项目经理的角色。需求的更改是哪里来的？最直接的是 concept design，我们拿到的界面更改都是来自于他们的设计，跟他们聊过几次后却发现，这些更改源于他们的老板或者我们老板，或者这些他们之间的讨论。问题就来了，我们的产品还没发布，需求更改不是源于用户反馈，不是源于调研数据，主要还是老板们之间的讨论决策。既然是可以通过足够的深思熟虑和讨论得出来的结果，为什么不是在想清楚了之后再让下面的人开始开工？这锅得老板们背。（这些都是从目前能够了解到的信息上做的一点推论，对于具体的决策流程不是很了解，如果有补充或者不对的地方，之后会更正）。
+<!-- more -->
 
-为什么程序员那么不喜欢改需求？其实对于简单的添加或者删除点功能，大多数是比较无所谓的，麻烦点的是要更改部分代码架构的，需要花比较多的时间和精力才能够解决。为了能够应对需求的更改，程序员在拿到需求后，需要考虑代码结构的灵活性？太固定了，碰到一些需求更改就麻烦了，太灵活了，可能会用力过猛，花了太多精力，其实简单做就可以了。重复不断的更改和推翻自己之前设计的和写的代码，难免是不爽的。而最麻烦的是要改底层代码，重新架构的，程序员基本会说这是不可能做到的，劳民伤财，如果不是特别特别重要的需求，基本是不会被接收的。
+MDN 官方文档对 bind() 的定义
+>The **bind()** method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
 
-### 底层模块
-做底层开发的，更需要充分考虑业务需求。底层开发，不和业务直接接触，离业务代码有点远，但不代表他们就不需要了解公司业务。与此相反，底层开发人员，更要了解业务需求，通过业务需求，考虑内部开发人员的需求，然后根据这些去造轮子。公司用的前端模块，是内部开发的，不评价整套前端用的技术栈，单聊内部开发的前端模块。同团队，以及别的团队的几个朋友用下来的唯一感觉，就是难用。没有足够清楚的文档，一些要用到的功能私有了，一些要用的功能根本没有。很残忍，很痛苦。所以，在当初分团队的时候，建议大部分人先开发业务代码，之后如果有兴趣再转底层，是有一定道理的。
+室友读完后第一反应，能不能说人话 ？？简单说，bind() 是用来控制调用函数的范围（全局、某个类等等），在是 `bind(arg1)` 这个函数被调用时，`arg1` 是调用 bind() 函数里面的 this，不管这个函数被调用多少次，这个函数里的 this 一直是这个 arg1。貌似，有点像人话，但你TM在说什么？
 
-### 写 bug，修 bug，修 修过了又被别人修出来的bug
-修 bug 时，碰到好几次这样的问题，明明这个 bug 已经解决了，开开心心的 close ticket，结果测试人员测试后，又重新开了这个 ticket。很纳闷，结果一测试，还真的不好使，一脸黑人问号。debug, debug..... 终于发现，别人修 bug 时，把这个功能又搞坏了。这是一个团队合作开发时比较容易出现的问题，修完自己的 bug，测试完了，没什么问题，收工，全然没有发现在修路时把别人家给推了。解决这的一个办法是改完一个 bug，就进行一次全面的测试，但是效率太低，大多数人不会这么干。另外一个办法是要注意要改的功能，是不是在其他地方也用了，在改之前就要充分考虑好所有会别影响到的功能。最好的方法，应该是写测试，所有人在做了更改后都可以跑遍测试，来检测是不是所有的功能都能如期运行。
+只好用 [MDN Function.prototype.bind()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) 官方文档两个栗子来解释 bind() 的用法。
 
-## 码字
-一入农药深似海，从此码字是路人。7月就码了一篇荣耀篇，[王者荣耀：从入坑到放弃](http://www.jianshu.com/p/261bb5f79697)，其他时间不是在荣耀上，就是在路上。被自己分析的东西给套路了，很多事不是你不懂，而是你懂，却还照样做，就像吸烟有害健康，每天还是得来两根。
+```
+this.x = 9;
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
 
-我爱学习，学习使我快乐 : /
+module.getX(); // 81
+
+var retrieveX = module.getX;
+retrieveX();  // 9
+
+var boundGetX = retrieveX.bind(module);
+boundGetX(); // 81
+```
+1. `module.getX(); ` 的结果是 81，因为 getX 里的 this 是 module, 所以 this.x 是 module 里的 `x = 81`。
+2. `retrieveX();` 的结果是 9， 因为这时相当于 `var retrieveX = function() { return this.x; };`， `retrieveX();` 相当于在全局跑了遍函数里的内容，this.x 是 全局的 `this.x = 9`。
+
+关键来了：`var boundGetX = retrieveX.bind(module);`，**bind(module) 的作用是每当调用 retrieveX() 这个函数时，这个函数里的 this 都是 module，替换掉了全局的 this**，在 boundGetX() 调用时，返回的是 `module.x`，所以是 81。
+
+再看第二个栗子：
+```
+function LateBloomer() {
+  this.petalCount =  1;
+}
+
+LateBloomer.prototype.bloom = function() {
+  window.setTimeout(this.declare.bind(this), 1000);
+};
+
+LateBloomer.prototype.declare = function() {
+  console.log('I am a beautiful flower with ' + this.petalCount + ' petals!');
+};
+
+var flower = new LateBloomer();
+flower.bloom();
+// 执行结果：1s 后，打印出 'I am a beautiful flower with 1 petals!'
+```
+这个栗子的核心是 `window.setTimeout(this.declare.bind(this), 1000);`  首先这里的两个 `this` 都指的是LateBloomer。这个栗子一开始看来显得有点智障，为了要打印出那句话，直接用 `window.setTimeout(this.declare(), 1000);` 不就好了，干嘛还要 bind()？通常，像我这种质疑这种成千上万的人看过没有问题的文档的才是智障那个。
+
+这个栗子主要是为了讲 bind() 的返回值。`window.setTimeout(function, milliseconds)` 这是这个函数的用法，function 是延迟的函数，milliseconds 是延迟的时间。如果`console.log(this.declare());` 一下就会发现, 结果是 undefined， `console.log(this.declare.bind(this));` 的结果则是 declare 这个函数，**在使用 bind() 了之后，会创建一个新的函数。**
+
+这也就是为什么要用 `window.setTimeout(this.declare.bind(this), 1000);`，只有这样，才能看到1秒延迟，不信你删掉bind()试试看。
+
+综上，重新看下那句非人话。**在 bind(arg1, arg2) 被调用时，会创建一个新函数，这个新函数的 this，都是 arg1，也就是第一个参数。**

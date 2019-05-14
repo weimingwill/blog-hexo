@@ -5,6 +5,8 @@ tags: [技术,Vue]
 ---
 > 懂点基础，学点套路，轻松用 Vue 写个网站
 
+<!-- more -->
+
 几个月前用 Vue + Vuetify 这一套框架写了个 仓库管理系统 和 个人网站，近来不写前端了，所以整理了如何用 Vue，Vuetify，Vuex，Vue-router 写一个单页应用 (SPA)，为以后回忆方便，也供初学者参考，少踩坑。
 
 （这篇不是 Vue 的基础介绍，所以建议先读了 Vue 的官方文档，再来看怎么应用。）
@@ -229,12 +231,12 @@ const state = {
   ]
 }
 ```
-具体定义了每一个组件(component) 的名字，图标，位置，路由的地址等，具体怎么实现路由的稍后在 Vue-router 里细说，这里重点看 `Lazyloading()` 这个函数。 
+具体定义了每一个组件(component) 的名字，图标，位置，路由的地址等，具体怎么实现路由的稍后在 Vue-router 里细说，这里重点看 `Lazyloading()` 这个函数。
 ```
 // src/store/modules/menu/lazyloading.js
 export default (name, index = false) => () => require.ensure([], (require) => require(`../../../views/${name}${index ? '/index' : ''}.vue`))
 ```
-文件里面只有这一行代码，用处是告诉 webpack 在加载 `.vue` 文件时，知道去哪里找这个文件，比如 
+文件里面只有这一行代码，用处是告诉 webpack 在加载 `.vue` 文件时，知道去哪里找这个文件，比如
 `lazyLoading('projects/Projects')` 指的是 `../../../views/projects/Projects.vue`，也就是 `src/views/projects/Proejcts.vue` 这个文件。当 `lazyloading('xxxx', index=true)` 时，会去找 `xxxx` 文件夹下面的 `index.vue`。
 
 ### Vue-router
