@@ -1,7 +1,11 @@
 ---
 title: 共识算法Raft
+tags:
+  - 技术
+  - 分布式
+  - 共识算法
+abbrlink: 2f53bd83
 date: 2018-02-27 10:59:55
-tags: [技术,分布式,共识算法]
 ---
 上篇讲到了「拜占庭将军问题」：多个拜占庭将军要如何在可能有叛徒、信使可能被策反或者暗杀的情况下达成是否要进攻的一致性决定？还不了解的先看看上一篇[《拜占庭将军问题》]([https://mp.weixin.qq.com/s/PJvCXm9pwU-Wp3LNN7g8pQ](https://mp.weixin.qq.com/s/PJvCXm9pwU-Wp3LNN7g8pQ))。这篇主要是介绍简化版拜占庭将军问题的解决方案：Raft 共识算法。
 

@@ -1,7 +1,10 @@
 ---
 title: JavaScript bind() 的用法
+tags:
+  - 技术
+  - JavaScript
+abbrlink: 9afd33ad
 date: 2017-04-12 12:43:31
-tags: [技术,JavaScript]
 ---
 > 本以为学会了独孤九剑，结果握剑姿势都不对。
 

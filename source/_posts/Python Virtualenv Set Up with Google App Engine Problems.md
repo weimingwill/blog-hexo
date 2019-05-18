@@ -1,7 +1,10 @@
 ---
 title: Python Virtualenv Set Up with Google App Engine Problems
+tags:
+  - 技术
+  - Python
+abbrlink: 61ad3714
 date: 2016-05-03 17:28:20
-tags: [技术,Python]
 ---
 <!-- more -->
 **1. Import Error: from google import appengine.api**

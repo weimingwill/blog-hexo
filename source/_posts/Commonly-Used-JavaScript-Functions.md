@@ -1,7 +1,10 @@
 ---
 title: Commonly Used JavaScript Functions
+tags:
+  - 技术
+  - JavaScript
+abbrlink: d9909ff1
 date: 2017-05-27 12:43:31
-tags: [技术,JavaScript]
 ---
 <!-- more -->
 

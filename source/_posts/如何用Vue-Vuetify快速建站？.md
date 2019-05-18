@@ -1,7 +1,10 @@
 ---
 title: 如何用 Vue + Vuetify 快速建站？
+tags:
+  - 技术
+  - Vue
+abbrlink: b5e84ff5
 date: 2017-09-28 22:06:40
-tags: [技术,Vue]
 ---
 > 懂点基础，学点套路，轻松用 Vue 写个网站
 
