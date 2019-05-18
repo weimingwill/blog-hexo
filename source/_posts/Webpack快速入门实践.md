@@ -1,7 +1,10 @@
 ---
 title: Webpack快速入门实践
+tags:
+  - 技术
+  - webpack
+abbrlink: '46369932'
 date: 2017-04-08 16:12:49
-tags: [技术,webpack]
 ---
 ![webpack](https://i.imgur.com/qvGm45u.png)
 

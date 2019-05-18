@@ -1,6 +1,5 @@
 <% if (theme.duoshuo){ %>
 	<div id="comment">
-		
 	<!-- 多说评论框 start -->
 	 <div class="ds-thread" data-thread-key="<%- config.root %><%- item.path%>" data-title="<%- item.title %>" data-url="<%- item.permalink %>"></div>
 	<!-- 多说评论框 end -->
@@ -22,7 +21,7 @@
 <% } else if (theme.disqus) {%>
 	<section id="comments" class="comment">
 	  <div id="disqus_thread">
-	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="external nofollow">comments powered by Disqus.</a></noscript>
 	  </div>
 	</section>
 
