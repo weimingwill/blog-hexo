@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "blog-weiming-me",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
