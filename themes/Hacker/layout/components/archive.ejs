@@ -15,7 +15,7 @@ if (page.archive){
   <div class="archive">
 
     <% var last; %>
-    <% page.posts.each(function(post, i){ %>
+    <% site.posts.sort('date').reverse().each(function(post, i){ %>
       <% var year = post.date.year(); %>
       <% if (last != year){ %>
       <% if (last != null){ %>
@@ -55,7 +55,7 @@ if (page.archive){
     <% if (page.posts.length){ %>
       </div></section>
     <% } %>
-    <%- partial('pagination') %>
+    <%# partial('pagination') %>
   </div>
 
 </article>
