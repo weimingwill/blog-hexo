@@ -10,7 +10,7 @@ tags:
 ![image-20201015164142078](https://imgur.com/QoRzqFo.png)
 
 
-论文地址：https://arxiv.org/abs/2008.11560
+论文地址：[Performance Optimization for Federated Person Re-identification via Benchmark Analysis](https://arxiv.org/abs/2008.11560)
 
 开源代码：https://github.com/cap-ntu/FedReID
 
@@ -46,6 +46,17 @@ tags:
 
 ![img](https://imgur.com/2kB35i5.png)
 
+FedPav 的每一轮训练可以通过4个步骤完成：
+
+1. Server 下发一个全局模型到每个 Client
+2. 每个 Client 收到全局模型后，将全局模型加上本地的分类器，用本地数据进行训练，每个 Client 得到一个 local model
+3. Client 将 local model 的 backbone 上传到 Server
+4. Server 对所有 client 收到的 model 进行加权平均。
+
+完整的算法可以参考下图：
+
+![img](https://i.imgur.com/p4er8nN.png)
+
 ## Benchmark 结果
 
 通过 Benchmark 的实验，论文里描述了不少联邦学习和行人重识别结合的洞见。这边着重提出两点因数据异构性导致的问题。
@@ -70,23 +81,26 @@ Local Training 效果比联邦学习的效果好，说明这些大数据集没�
 
 ### 采用知识蒸馏，提高收敛
 
-![image-20201015163720421](https://imgur.com/bNGvxkI.png)
+因为数据的异构性的原因，导致参与联邦学习多方上传前的本地模型的性能优于云端服务器进行模型融合后的模型性能，另外数据异构性还导致了训练的不稳定性和难收敛的问题。针对这个问题，本方案提出使用知识蒸馏的方法，将参与联邦学习的多方的本地模型当成教师模型，云端服务器的模型作为学生模型，用知识蒸馏的方法更好的将教师模型的知识传递到学生模型，以此提高了模型训练的稳定性和收敛性。完整算法可以参考下图：
 
-将每个 Client 做为教师模型，Server 作为学生模型，进行知识蒸馏，以更好的把 Client 学到的知识传递到 Server 上，能够有效提高收敛（下图橙线）
+![image-20201015163720421](https://imgur.com/bNGvxkI.png)
+![img](https://i.imgur.com/lpVt8Ip.png)
+
+下面的实验结果显示，采用知识蒸馏（橙线）的训练收敛效果能够得到有效提高。
 
 ![image-20201015162731576](https://imgur.com/WKXbXbj.png)
 
 
 
 
-
 ### 提出权重重分配，提高精度
 
-调整联邦学习模型融合时各方模型更新的权重：给训练效果越好的边端，分配更大的权重，在模型融合时产生更大的影响。
+原算法在 Server 上做模型整合，采用的是**加权平均**的方法，用每个 Client 的数据量作为权重，进行加权平均。每个 Client 的数据量差距可能非常大，有的占比 40%，有的占比不到 1%，所以该论文提出了进行权重分配。调整联邦学习模型融合时各方模型更新的权重：给训练效果越好的边端，分配更大的权重，在模型融合时产生更大的影响。训练效果的衡量是通过比较每一方本地训练前后模型用一批数据做推理产生的特征的余弦距离，余弦距离越大，该训练产生的变化越大，该分配的权重越大。完整算法可以参考下图：
 
 ![img](https://imgur.com/nTU2VcI.png)
+![img](https://i.imgur.com/HnPpG2E.png)
 
-权重重分配使所有边端模型的性能都超过 Local Training，带来普遍的性能提升。
+下表格的实验结果显示，权重重分配使所有边端模型的性能都超过 Local Training，带来普遍的性能提升。
 
 ![image-20201015162747403](https://imgur.com/kJuZCv4.png)
 
@@ -98,3 +112,8 @@ Local Training 效果比联邦学习的效果好，说明这些大数据集没�
 
 算法细节和更多实验结果，推荐阅读原论文和开源代码。
 
+
+## 资源
+
+* 论文地址：[Performance Optimization for Federated Person Re-identification via Benchmark Analysis](https://arxiv.org/abs/2008.11560)
+* 开源代码：https://github.com/cap-ntu/FedReID
